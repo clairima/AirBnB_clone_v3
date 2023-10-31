@@ -87,19 +87,25 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to file.json"""
 
+
 class TestDBStorage(unittest.TestCase):
     """Test the DBStorage class"""
 
     def test_get_method(self):
         """Test retrieving an existing object and a non-existing object"""
-        retrieved_state = self.storage.get(State, "some_valid_id")
+        state = State({'name': "something"})
+        state.save()
+        retrieved_state = models.storage.get(State, state.id)
         self.assertIsNotNone(retrieved_state)
-        non_existing_state = self.storage.get(State, "non_existing_id")
+        non_existing_state = models.storage.get(State, "non_existing_id")
         self.assertIsNone(non_existing_state)
 
     def test_count_method(self):
-        """Test counting objects of a specific class and counting all objects in storage"""
-        state_count = self.storage.count(State)
-        self.assertEqual(state_count, 2)
-        total_count = self.storage.count()
-        self.assertEqual(total_count, 2)
+        """Test counting objects of a specific class and counting
+        all objects in storage"""
+        states = models.storage.all(State)
+        all_data = models.storage.all()
+        state_count = models.storage.count(State)
+        self.assertEqual(state_count, len(states))
+        total_count = models.storage.count()
+        self.assertEqual(total_count, len(all_data))

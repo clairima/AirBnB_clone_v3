@@ -16,7 +16,7 @@ class MyStatesAPITestCase(unittest.TestCase):
         self.app.testing = True
 
     def test_get_states(self):
-        """ 
+        """
         Get states
         """
         state = State({'name': 'California'})
@@ -26,7 +26,7 @@ class MyStatesAPITestCase(unittest.TestCase):
         self.assertEqual(response.content_type, 'application/json')
 
     def test_get_state(self):
-        """ 
+        """
         Get a state object
         """
         state = State({'name': 'California'})

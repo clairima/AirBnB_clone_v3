@@ -17,7 +17,7 @@ class MyCitiesAPITestCase(unittest.TestCase):
         self.app.testing = True
 
     def test_get_cities_state(self):
-        """ 
+        """
         Get cities for a state
         """
         state = State({'name': 'California'})
@@ -29,7 +29,7 @@ class MyCitiesAPITestCase(unittest.TestCase):
         self.assertEqual(response.content_type, 'application/json')
 
     def test_get_city(self):
-        """ 
+        """
         Get a city object
         """
         state = State({'name': 'California'})

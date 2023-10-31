@@ -16,7 +16,7 @@ class MyusersAPITestCase(unittest.TestCase):
         self.app.testing = True
 
     def test_get_users(self):
-        """ 
+        """
         Get users
         """
         user = User({'name': 'person1',
@@ -28,7 +28,7 @@ class MyusersAPITestCase(unittest.TestCase):
         self.assertEqual(response.content_type, 'application/json')
 
     def test_get_user(self):
-        """ 
+        """
         Get a user object
         """
         user = User({'name': 'person1',
